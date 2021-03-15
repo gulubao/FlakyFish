@@ -1,0 +1,14 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    BuyPage
+{% endblock %}
+
+{% block content %}
+    股票的价格是{{ stock_1 }}
+    你有{{ money }} 元
+    你持有stock_1的数量是{{ player.Stock_1_amount }}
+    {% next_button %}
+
+{% endblock %}
