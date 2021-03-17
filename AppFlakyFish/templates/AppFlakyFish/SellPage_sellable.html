@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+   SellPage_sellable
+{% endblock %}
+
+{% block content %}
+    {% if round_number == 1 %}
+    {% else %}
+        <p>股票1的历史价格是{{ subsession.stock_1_history }} </p>
+        <p>股票2的历史价格是{{ subsession.stock_2_history }} </p>
+        <p>股票3的历史价格是{{ subsession.stock_3_history }} </p>
+        <p>股票4的历史价格是{{ subsession.stock_4_history }} </p>
+        <p>股票5的历史价格是{{ subsession.stock_5_history }} </p>
+        <p>股票6的历史价格是{{ subsession.stock_6_history }} </p>
+    {% endif %}
+    <p>当前是第{{ round_number }} 轮</p>
+    <p>股票1的价格是{{ stock_1 }} USD </p>
+    <p>股票2的价格是{{ stock_2 }} USD </p>
+    <p>股票3的价格是{{ stock_3 }} USD </p>
+    <p>股票4的价格是{{ stock_4 }} USD </p>
+    <p>股票5的价格是{{ stock_5 }} USD </p>
+    <p>股票6的价格是{{ stock_6 }} USD </p>
+    <p>你有{{ money }} 元 </p>
+
+    {% next_button %}
+
+{% endblock %}
+
+
+
