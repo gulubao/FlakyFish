@@ -5,8 +5,15 @@ SESSION_CONFIGS = [
     dict(
         name='AppFlakyFish',
         display_name="FlakyFish",
-        num_demo_participants=1,
+        num_demo_participants=2,
         app_sequence=['AppFlakyFish', 'payment_info'],
+    ),
+
+    dict(
+        name='AppFlakyFish_copy',
+        display_name="FlakyFish copy",
+        num_demo_participants=3,
+        app_sequence=['AppFlakyFish_copy', 'payment_info'],
     ),
 
     dict(
@@ -26,6 +33,12 @@ SESSION_CONFIGS = [
         display_name='survey',
         num_demo_participants=1,
         app_sequence=['survey', 'payment_info'],
+    ),
+    dict(
+        name='common_value_auction',
+        display_name='common value auction',
+        num_demo_participants=4,
+        app_sequence=['common_value_auction', 'payment_info'],
     ),
 ]
 
