@@ -2,12 +2,10 @@
 {% load otree static %}
 
 {% block title %}
-   SellPage_ReadOnly
+   平仓结算页面
 {% endblock %}
 
 {% block content %}
-
-
 
 
 <div id="container">    </div>
@@ -73,27 +71,10 @@
     });
 </script>
 
-
-
-
-
-    {% if round_number == 1 %}
-    {% else %}
-        <!-- <p>股票1的历史价格是{{ group.stock_1_price_history }} </p>
-        <p>股票2的历史价格是{{ group.stock_2_price_history }} </p>
-        <p>股票3的历史价格是{{ group.stock_3_price_history }} </p>
-        <p>股票4的历史价格是{{ group.stock_4_price_history }} </p>
-        <p>股票5的历史价格是{{ group.stock_5_price_history }} </p>
-        <p>股票6的历史价格是{{ group.stock_6_price_history }} </p> -->
-    {% endif %}
     <p>当前是第{{ round_number }} 轮</p>
-    <!-- <p>股票1的价格是{{ stock_1_price }} USD </p>
-    <p>股票2的价格是{{ stock_2_price }} USD </p>
-    <p>股票3的价格是{{ stock_3_price }} USD </p>
-    <p>股票4的价格是{{ stock_4_price }} USD </p>
-    <p>股票5的价格是{{ stock_5_price }} USD </p>
-    <p>股票6的价格是{{ stock_6_price }} USD </p> -->
-    <p>你有{{ money }} 元 </p>
+    <p>所有持股已出售</p>
+
+    <p>你持有{{ money }} 元 </p>
 
     {% next_button %}
 

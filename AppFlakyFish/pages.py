@@ -3,7 +3,7 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class SellPage_ReadOnly(Page):
+class ReadOnly(Page):
 
     form_model = 'player'
 
@@ -64,63 +64,62 @@ class SellPage_ReadOnly(Page):
                        ]
                     )
 
-
-class BuyPage_ReadOnly(Page):
-
-    form_model = 'player'
-
-    def is_displayed(player):
-        return player.round_number in [1,2,3,4]
-
-    def vars_for_template(self):
-        self.player.update_stock_1_amount()
-        self.player.update_stock_2_amount()
-        self.player.update_stock_3_amount()
-        self.player.update_stock_4_amount()
-        self.player.update_stock_5_amount()
-        self.player.update_stock_6_amount()
-        return {
-            'round_number': self.round_number,
-            'money': round(self.player.money, 2),
-            'stock_1_price': round(self.group.stock_1_price, 2),
-            'stock_2_price': round(self.group.stock_2_price, 2),
-            'stock_3_price': round(self.group.stock_3_price, 2),
-            'stock_4_price': round(self.group.stock_4_price, 2),
-            'stock_5_price': round(self.group.stock_5_price, 2),
-            'stock_6_price': round(self.group.stock_6_price, 2),
-            'stock_1_amount': self.player.stock_1_amount,
-            'stock_2_amount': self.player.stock_2_amount,
-            'stock_3_amount': self.player.stock_3_amount,
-            'stock_4_amount': self.player.stock_4_amount,
-            'stock_5_amount': self.player.stock_5_amount,
-            'stock_6_amount': self.player.stock_6_amount
-        }
-    
-    def js_vars(self):
-        return dict(
-                   highcharts_series = [
-                       {
-                        'name' : 'stock_1_price',
-                        'data' :  [round(g.stock_1_price,2) for g in self.group.in_all_rounds()]
-                        }, {
-                        'name' : 'stock_2_price',
-                        'data' :  [round(g.stock_2_price,2) for g in self.group.in_all_rounds()]
-                        }, {
-                        'name' : 'stock_3_price',
-                        'data' :  [round(g.stock_3_price,2) for g in self.group.in_all_rounds()]
-                        }, {
-                        'name' : 'stock_4_price',
-                        'data' :  [round(g.stock_4_price,2) for g in self.group.in_all_rounds()]
-                        }, {
-                        'name' : 'stock_5_price',
-                        'data' :  [round(g.stock_5_price,2) for g in self.group.in_all_rounds()]
-                        }, {
-                        'name' : 'stock_6_price',
-                        'data' :  [round(g.stock_6_price,2) for g in self.group.in_all_rounds()]
-                        }
-                       ]
-                    )
-
+#
+# class BuyPage_ReadOnly(Page):
+#
+#     form_model = 'player'
+#
+#     def is_displayed(player):
+#         return player.round_number in [1,2,3,4]
+#
+#     def vars_for_template(self):
+#         self.player.update_stock_1_amount()
+#         self.player.update_stock_2_amount()
+#         self.player.update_stock_3_amount()
+#         self.player.update_stock_4_amount()
+#         self.player.update_stock_5_amount()
+#         self.player.update_stock_6_amount()
+#         return {
+#             'round_number': self.round_number,
+#             'money': round(self.player.money, 2),
+#             'stock_1_price': round(self.group.stock_1_price, 2),
+#             'stock_2_price': round(self.group.stock_2_price, 2),
+#             'stock_3_price': round(self.group.stock_3_price, 2),
+#             'stock_4_price': round(self.group.stock_4_price, 2),
+#             'stock_5_price': round(self.group.stock_5_price, 2),
+#             'stock_6_price': round(self.group.stock_6_price, 2),
+#             'stock_1_amount': self.player.stock_1_amount,
+#             'stock_2_amount': self.player.stock_2_amount,
+#             'stock_3_amount': self.player.stock_3_amount,
+#             'stock_4_amount': self.player.stock_4_amount,
+#             'stock_5_amount': self.player.stock_5_amount,
+#             'stock_6_amount': self.player.stock_6_amount
+#         }
+#
+#     def js_vars(self):
+#         return dict(
+#                    highcharts_series = [
+#                        {
+#                         'name' : 'stock_1_price',
+#                         'data' :  [round(g.stock_1_price,2) for g in self.group.in_all_rounds()]
+#                         }, {
+#                         'name' : 'stock_2_price',
+#                         'data' :  [round(g.stock_2_price,2) for g in self.group.in_all_rounds()]
+#                         }, {
+#                         'name' : 'stock_3_price',
+#                         'data' :  [round(g.stock_3_price,2) for g in self.group.in_all_rounds()]
+#                         }, {
+#                         'name' : 'stock_4_price',
+#                         'data' :  [round(g.stock_4_price,2) for g in self.group.in_all_rounds()]
+#                         }, {
+#                         'name' : 'stock_5_price',
+#                         'data' :  [round(g.stock_5_price,2) for g in self.group.in_all_rounds()]
+#                         }, {
+#                         'name' : 'stock_6_price',
+#                         'data' :  [round(g.stock_6_price,2) for g in self.group.in_all_rounds()]
+#                         }
+#                        ]
+#                     )
 
 class SellPage_sellable(Page):
     form_model = 'player'
@@ -312,4 +311,50 @@ class BuyPage_buyable(Page):
                     self.player.stock_6_bid_amount * self.group.stock_6_price 
 
 
-page_sequence = [SellPage_ReadOnly, BuyPage_ReadOnly, SellPage_sellable, BuyPage_buyable]
+class Clear(Page):
+    form_model = 'player'
+
+    def is_displayed(player):
+        return player.round_number == Constants.num_rounds
+
+    def vars_for_template(self):
+        self.player.money = self.player.money + \
+                            self.player.stock_1_amount * self.group.stock_1_price + \
+                            self.player.stock_2_amount * self.group.stock_2_price + \
+                            self.player.stock_3_amount * self.group.stock_3_price + \
+                            self.player.stock_4_amount * self.group.stock_4_price + \
+                            self.player.stock_5_amount * self.group.stock_5_price + \
+                            self.player.stock_6_amount * self.group.stock_6_price
+        return {
+            'round_number': self.round_number,
+            'money': round(self.player.money, 2),
+        }
+
+
+    def js_vars(self):
+        return dict(
+                   highcharts_series = [
+                       {
+                        'name' : 'stock_1_price',
+                        'data' :  [round(g.stock_1_price,2) for g in self.group.in_all_rounds()]
+                        }, {
+                        'name' : 'stock_2_price',
+                        'data' :  [round(g.stock_2_price,2) for g in self.group.in_all_rounds()]
+                        }, {
+                        'name' : 'stock_3_price',
+                        'data' :  [round(g.stock_3_price,2) for g in self.group.in_all_rounds()]
+                        }, {
+                        'name' : 'stock_4_price',
+                        'data' :  [round(g.stock_4_price,2) for g in self.group.in_all_rounds()]
+                        }, {
+                        'name' : 'stock_5_price',
+                        'data' :  [round(g.stock_5_price,2) for g in self.group.in_all_rounds()]
+                        }, {
+                        'name' : 'stock_6_price',
+                        'data' :  [round(g.stock_6_price,2) for g in self.group.in_all_rounds()]
+                        }
+                       ]
+                    )
+
+
+page_sequence = [ReadOnly, SellPage_sellable, BuyPage_buyable, Clear]
