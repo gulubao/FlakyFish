@@ -142,8 +142,39 @@ class SellPage_sellable(Page):
     form_fields = ['stock_1_sell_amount', 'stock_2_sell_amount', 'stock_3_sell_amount', 'stock_4_sell_amount', 'stock_5_sell_amount', 'stock_6_sell_amount']
     # form_fields = ['stock_1_sell_amount', 'stock_2_sell_amount']
 
+#%%   动态验证
+    def stock_1_sell_amount_error_message(self, value):
+        print('value is', value)
+        if value > self.player.stock_1_amount:
+            return 'Sell is over ownd.'
 
+    def stock_2_sell_amount_error_message(self, value):
+        print('value is', value)
+        if value > self.player.stock_2_amount:
+            return 'Sell is over ownd.'
 
+    def stock_3_sell_amount_error_message(self, value):
+        print('value is', value)
+        if value > self.player.stock_3_amount:
+            return 'Sell is over ownd.'
+
+    def stock_4_sell_amount_error_message(self, value):
+        print('value is', value)
+        if value > self.player.stock_4_amount:
+            return 'Sell is over ownd.'
+
+    def stock_5_sell_amount_error_message(self, value):
+        print('value is', value)
+        if value > self.player.stock_5_amount:
+            return 'Sell is over ownd.'
+
+    def stock_6_sell_amount_error_message(self, value):
+        print('value is', value)
+        if value > self.player.stock_6_amount:
+            return 'Sell is over ownd.'
+###  动态验证END
+
+#%%
     def is_displayed(player):
         return player.round_number > 4
 
@@ -229,6 +260,22 @@ class BuyPage_buyable(Page):
 
     form_model = 'player'
     form_fields = ['stock_1_bid_amount', 'stock_2_bid_amount', 'stock_3_bid_amount', 'stock_4_bid_amount', 'stock_5_bid_amount', 'stock_6_bid_amount']
+
+#%% 动态验证
+    def error_message(self, values):
+        print('values is', values)
+        if  values['stock_1_bid_amount'] * self.group.stock_1_price + \
+            values['stock_2_bid_amount'] * self.group.stock_2_price + \
+            values['stock_3_bid_amount'] * self.group.stock_3_price + \
+            values['stock_4_bid_amount'] * self.group.stock_4_price + \
+            values['stock_5_bid_amount'] * self.group.stock_5_price + \
+            values['stock_6_bid_amount'] * self.group.stock_6_price \
+            > self.player.money:
+            return 'Your Money is not enough'
+### 动态验证END
+
+
+
 
     def is_displayed(player):
         return player.round_number > 4

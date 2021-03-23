@@ -10,13 +10,6 @@ SESSION_CONFIGS = [
     ),
 
     dict(
-        name='AppFlakyFish_copy',
-        display_name="FlakyFish copy",
-        num_demo_participants=3,
-        app_sequence=['AppFlakyFish_copy', 'payment_info'],
-    ),
-
-    dict(
         name='public_goods',
         display_name="Public Goods",
         num_demo_participants=3,
