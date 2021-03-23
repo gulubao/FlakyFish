@@ -209,9 +209,6 @@ class SellPage_sellable(Page):
 
 
     def before_next_page(self):
-        print(f'self.player.stock_1_sell_amount = {self.player.stock_1_sell_amount}')
-        print(f'self.player.stock_2_sell_amount = {self.player.stock_2_sell_amount}')
-
         self.player.stock_1_amount = self.player.stock_1_amount - self.player.stock_1_sell_amount
         self.player.stock_2_amount = self.player.stock_2_amount - self.player.stock_2_sell_amount
         self.player.stock_3_amount = self.player.stock_3_amount - self.player.stock_3_sell_amount
@@ -219,8 +216,13 @@ class SellPage_sellable(Page):
         self.player.stock_5_amount = self.player.stock_5_amount - self.player.stock_5_sell_amount
         self.player.stock_6_amount = self.player.stock_6_amount - self.player.stock_6_sell_amount
 
-        print(f'self.player.stock_1_amount = {self.player.stock_1_amount}')
-        print(f'self.player.stock_2_amount = {self.player.stock_2_amount}')
+        self.player.money = self.player.money + \
+                            self.player.stock_1_sell_amount * self.group.stock_1_price + \
+                            self.player.stock_2_sell_amount * self.group.stock_2_price + \
+                            self.player.stock_3_sell_amount * self.group.stock_3_price + \
+                            self.player.stock_4_sell_amount * self.group.stock_4_price + \
+                            self.player.stock_5_sell_amount * self.group.stock_5_price + \
+                            self.player.stock_6_sell_amount * self.group.stock_6_price 
 
 
 class BuyPage_buyable(Page):
@@ -281,6 +283,14 @@ class BuyPage_buyable(Page):
         self.player.stock_4_amount = self.player.stock_4_amount + self.player.stock_4_bid_amount
         self.player.stock_5_amount = self.player.stock_5_amount + self.player.stock_5_bid_amount
         self.player.stock_6_amount = self.player.stock_6_amount + self.player.stock_6_bid_amount
+
+        self.player.money = self.player.money - \
+                    self.player.stock_1_bid_amount * self.group.stock_1_price - \
+                    self.player.stock_2_bid_amount * self.group.stock_2_price - \
+                    self.player.stock_3_bid_amount * self.group.stock_3_price - \
+                    self.player.stock_4_bid_amount * self.group.stock_4_price - \
+                    self.player.stock_5_bid_amount * self.group.stock_5_price - \
+                    self.player.stock_6_bid_amount * self.group.stock_6_price 
 
 
 page_sequence = [SellPage_ReadOnly, BuyPage_ReadOnly, SellPage_sellable, BuyPage_buyable]

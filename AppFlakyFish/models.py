@@ -271,7 +271,7 @@ class Player(BasePlayer):
             money = 1000.0
         else:
             money = self.in_round(self.round_number - 1).money
-            money = money + 10.0
+            # money = money + 10.0
         self.money = money
 
 
