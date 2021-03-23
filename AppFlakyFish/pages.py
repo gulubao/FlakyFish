@@ -122,25 +122,9 @@ class BuyPage_ReadOnly(Page):
                     )
 
 
-
-
-
-    # def before_next_page(self):
-    #
-    #     # print(f'当前轮数：{self.round_number}')
-    #     # print(f'未更新股价{self.subsession.stock_1}')
-    #     # import random
-    #     # self.subsession.stock_1 = self.subsession.stock_1 + c(random.randint(1, 3))
-    #     # print(f'新的股价：{self.subsession.stock_1}')
-    #         print(f'当前资金：{self.player.money}')
-    #         self.player.money = self.player.money + c(10)
-    #         print(f'更新后资金：{self.player.money}')
-
-
 class SellPage_sellable(Page):
     form_model = 'player'
     form_fields = ['stock_1_sell_amount', 'stock_2_sell_amount', 'stock_3_sell_amount', 'stock_4_sell_amount', 'stock_5_sell_amount', 'stock_6_sell_amount']
-    # form_fields = ['stock_1_sell_amount', 'stock_2_sell_amount']
 
 #%%   动态验证
     def stock_1_sell_amount_error_message(self, value):
@@ -172,6 +156,7 @@ class SellPage_sellable(Page):
         print('value is', value)
         if value > self.player.stock_6_amount:
             return 'Sell is over ownd.'
+
 ###  动态验证END
 
 #%%
@@ -204,7 +189,6 @@ class SellPage_sellable(Page):
             'stock_6_amount': self.player.stock_6_amount
         }
 
-
     def js_vars(self):
         return dict(
                    highcharts_series = [
@@ -229,15 +213,6 @@ class SellPage_sellable(Page):
                         }
                        ]
                     )
-
-
-    # @staticmethod
-    # def error_message(player, values):
-    #     print('values is', values)
-    #     if values['stock_1_sell_amount'] >10:
-    #         return ' 不能卖太多'
-
-
 
     def before_next_page(self):
         self.player.stock_1_amount = self.player.stock_1_amount - self.player.stock_1_sell_amount
@@ -273,9 +248,6 @@ class BuyPage_buyable(Page):
             > self.player.money:
             return 'Your Money is not enough'
 ### 动态验证END
-
-
-
 
     def is_displayed(player):
         return player.round_number > 4
@@ -341,8 +313,3 @@ class BuyPage_buyable(Page):
 
 
 page_sequence = [SellPage_ReadOnly, BuyPage_ReadOnly, SellPage_sellable, BuyPage_buyable]
-
-
-# http://218.89.243.9:8000/InitializeParticipant/imvcaecj
-
-# http://10.31.166.192/InitializeParticipant/imvcaecj

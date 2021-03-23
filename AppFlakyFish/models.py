@@ -17,18 +17,16 @@ Your app description
 
 
 class Constants(BaseConstants):
-    name_in_url = 'AppFlakyFish_copy'
+    name_in_url = 'AppFlakyFish'
     players_per_group = None
     num_rounds = 17
-    endowment = 100.0
-    randomSeed = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
+    randomSeed = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17] # 设置每一轮的随机种子
     randomBottom = 10  # 股票随机波动不能小于此值 ，如果为 None 不设置下限 
 
 class Subsession(BaseSubsession):
     pass
 
 class Group(BaseGroup):
-
     stock_1_price = models.FloatField(min=0)
     stock_2_price = models.FloatField(min=0)
     stock_3_price = models.FloatField(min=0)
@@ -36,10 +34,8 @@ class Group(BaseGroup):
     stock_5_price = models.FloatField(min=0)
     stock_6_price = models.FloatField(min=0)
 
-
     def update_stock_price(self):
         import random
-
         roundNow = self.round_number
         rng = random.Random(Constants.randomSeed[roundNow-1])
 
@@ -124,7 +120,6 @@ class Group(BaseGroup):
             else:
                 return -amount
 
-        print(f'当前第{self.round_number}轮')
         if self.round_number == 1:
             ## 设置股票初始价格
             stock_1_price = round(rng.random()*30+20, 2) #随机在20-50间
@@ -271,53 +266,4 @@ class Player(BasePlayer):
             money = 1000.0
         else:
             money = self.in_round(self.round_number - 1).money
-            # money = money + 10.0
         self.money = money
-
-
-# {field_name}_error_message()
-# 这是验证一个字段的最灵活的方法。
-
-# class Player(BasePlayer):
-#     offer = models.CurrencyField()
-#     budget = models.CurrencyField()
-
-# def offer_error_message(player, value):
-#     print('value is', value)
-#     if value > player.budget:
-#         return 'Cannot offer more than your remaining budget'
-
-
-# def stock_1_sell_amount_error_message(player, value):
-#     print('value is', value)
-#     if value > player.stock_1_amount:
-#         return 'Cannot sell more than your remaining stock.'
-
-# {field_name}_max()
-# 此函数为在模型字段中动态地设置 max= 的方法。例如：
-
-# class Player(BasePlayer):
-#     offer = models.CurrencyField()
-#     budget = models.CurrencyField()
-
-
-# def offer_max(player):
-#     return player.budget
-
-# def stock_1_sell_amount_max(player):
-#     return player.stock_1_amount
-
-# def stock_2_sell_amount_max(player):
-#     return player.stock_2_amount
-
-# def stock_3_sell_amount_max(player):
-#     return player.stock_3_amount
-
-# def stock_4_sell_amount_max(player):
-#     return player.stock_4_amount
-
-# def stock_5_sell_amount_max(player):
-#     return player.stock_5_amount
-
-# def stock_6_sell_amount_max(player):
-#     return player.stock_6_amount
