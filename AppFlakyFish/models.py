@@ -209,19 +209,19 @@ class Player(BasePlayer):
     stock_5_amount = models.IntegerField(min=0, initial=0)
     stock_6_amount = models.IntegerField(min=0, initial=0)
 
-    stock_1_bid_amount = models.IntegerField(label='你要buy多少股票1', min=0, initial=0)
-    stock_2_bid_amount = models.IntegerField(label='你要buy多少股票2', min=0, initial=0)
-    stock_3_bid_amount = models.IntegerField(label='你要buy多少股票3', min=0, initial=0)
-    stock_4_bid_amount = models.IntegerField(label='你要buy多少股票4', min=0, initial=0)
-    stock_5_bid_amount = models.IntegerField(label='你要buy多少股票5', min=0, initial=0)
-    stock_6_bid_amount = models.IntegerField(label='你要buy多少股票6', min=0, initial=0)
+    stock_1_bid_amount = models.IntegerField(label='你要购买多少股票1', min=0, initial=0)
+    stock_2_bid_amount = models.IntegerField(label='你要购买多少股票2', min=0, initial=0)
+    stock_3_bid_amount = models.IntegerField(label='你要购买多少股票3', min=0, initial=0)
+    stock_4_bid_amount = models.IntegerField(label='你要购买多少股票4', min=0, initial=0)
+    stock_5_bid_amount = models.IntegerField(label='你要购买多少股票5', min=0, initial=0)
+    stock_6_bid_amount = models.IntegerField(label='你要购买多少股票6', min=0, initial=0)
 
-    stock_1_sell_amount = models.IntegerField(label='你要sell多少股票1', min=0, initial=0)
-    stock_2_sell_amount = models.IntegerField(label='你要sell多少股票2', min=0, initial=0)
-    stock_3_sell_amount = models.IntegerField(label='你要sell多少股票3', min=0, initial=0)
-    stock_4_sell_amount = models.IntegerField(label='你要sell多少股票4', min=0, initial=0)
-    stock_5_sell_amount = models.IntegerField(label='你要sell多少股票5', min=0, initial=0)
-    stock_6_sell_amount = models.IntegerField(label='你要sell多少股票6', min=0, initial=0)
+    stock_1_sell_amount = models.IntegerField(label='你要出售多少股票1', min=0, initial=0)
+    stock_2_sell_amount = models.IntegerField(label='你要出售多少股票2', min=0, initial=0)
+    stock_3_sell_amount = models.IntegerField(label='你要出售多少股票3', min=0, initial=0)
+    stock_4_sell_amount = models.IntegerField(label='你要出售多少股票4', min=0, initial=0)
+    stock_5_sell_amount = models.IntegerField(label='你要出售多少股票5', min=0, initial=0)
+    stock_6_sell_amount = models.IntegerField(label='你要出售多少股票6', min=0, initial=0)
 
 
 

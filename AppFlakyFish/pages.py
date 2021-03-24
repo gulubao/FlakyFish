@@ -22,7 +22,7 @@ class ReadOnly(Page):
 
         return {
             'round_number': self.round_number,
-            'money': round(self.player.money, 2),
+            'money': format(round(self.player.money, 2), ','),
             'stock_1_price': round(self.group.stock_1_price, 2),
             'stock_2_price': round(self.group.stock_2_price, 2),
             'stock_3_price': round(self.group.stock_3_price, 2),
@@ -173,7 +173,7 @@ class SellPage_sellable(Page):
         self.player.update_stock_6_amount()
         return {
             'round_number' : self.round_number,
-            'money': round(self.player.money, 2),
+            'money': format(round(self.player.money, 2), ','),
             'stock_1_price': round(self.group.stock_1_price, 2),
             'stock_2_price': round(self.group.stock_2_price, 2),
             'stock_3_price': round(self.group.stock_3_price, 2),
@@ -254,7 +254,7 @@ class BuyPage_buyable(Page):
     def vars_for_template(self):
          return {
             'round_number': self.round_number,
-            'money': round(self.player.money, 2),
+            'money': format(round(self.player.money, 2), ','),
             'stock_1_price': round(self.group.stock_1_price, 2),
             'stock_2_price': round(self.group.stock_2_price, 2),
             'stock_3_price': round(self.group.stock_3_price, 2),
@@ -327,7 +327,7 @@ class Clear(Page):
                             self.player.stock_6_amount * self.group.stock_6_price
         return {
             'round_number': self.round_number,
-            'money': round(self.player.money, 2),
+            'money': format(round(self.player.money, 2), ',')
         }
 
 

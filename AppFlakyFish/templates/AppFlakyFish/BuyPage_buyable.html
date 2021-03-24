@@ -82,14 +82,25 @@
     {% endif %}
 
     <p>当前是第{{ round_number }} 轮</p>
-    <p>你有股票1：{{ stock_1_amount }}股</p>
-    <p>你有股票2：{{ stock_2_amount }}股</p>
-    <p>你有股票3：{{ stock_3_amount }}股</p>
-    <p>你有股票4：{{ stock_4_amount }}股</p>
-    <p>你有股票5：{{ stock_5_amount }}股</p>
-    <p>你有股票6：{{ stock_6_amount }}股</p>
-    {% formfields %}
     <p>你有{{ money }} 元 </p>
+
+    <p>你有股票1：{{ stock_1_amount }}股</p>
+    {% formfield 'stock_1_bid_amount' %}
+
+    <p>你有股票2：{{ stock_2_amount }}股</p>
+    {% formfield 'stock_2_bid_amount' %}
+
+    <p>你有股票3：{{ stock_3_amount }}股</p>
+    {% formfield 'stock_3_bid_amount' %}
+
+    <p>你有股票4：{{ stock_4_amount }}股</p>
+    {% formfield 'stock_4_bid_amount' %}
+
+    <p>你有股票5：{{ stock_5_amount }}股</p>
+    {% formfield 'stock_5_bid_amount' %}
+
+    <p>你有股票6：{{ stock_6_amount }}股</p>
+    {% formfield 'stock_6_bid_amount' %}
 
     {% next_button %}
 

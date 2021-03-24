@@ -83,16 +83,28 @@
         <p>股票6的历史价格是{{ group.stock_6_price_history }} </p> -->
     {% endif %}
     <p>当前是第{{ round_number }} 轮</p>
-    <p>你有股票1：{{ stock_1_amount }}股</p>
-    <p>你有股票2：{{ stock_2_amount }}股</p>
-    <p>你有股票3：{{ stock_3_amount }}股</p>
-    <p>你有股票4：{{ stock_4_amount }}股</p>
-    <p>你有股票5：{{ stock_5_amount }}股</p>
-    <p>你有股票6：{{ stock_6_amount }}股</p>
-
-    {% formfields %}
-
     <p>你有{{ money }} 元 </p>
+
+    <p>你有股票1：{{ stock_1_amount }}股</p>
+    {% formfield 'stock_1_sell_amount' %}
+
+    <p>你有股票2：{{ stock_2_amount }}股</p>
+    {% formfield 'stock_2_sell_amount' %}
+
+    <p>你有股票3：{{ stock_3_amount }}股</p>
+    {% formfield 'stock_3_sell_amount' %}
+
+    <p>你有股票4：{{ stock_4_amount }}股</p>
+    {% formfield 'stock_4_sell_amount' %}
+
+    <p>你有股票5：{{ stock_5_amount }}股</p>
+    {% formfield 'stock_5_sell_amount' %}
+
+    <p>你有股票6：{{ stock_6_amount }}股</p>
+    {% formfield 'stock_6_sell_amount' %}
+
+<!--    {% formfields %}-->
+
 
     {% next_button %}
 
