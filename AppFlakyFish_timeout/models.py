@@ -17,22 +17,25 @@ Your app description
 
 
 class Constants(BaseConstants):
-    name_in_url = 'AppFlakyFish'
-    players_per_group = None
-    num_rounds = 17
+    import random
 
     import datetime as dt
     hour = dt.datetime.now().strftime('%H')
     minute = dt.datetime.now().strftime('%M')
     second = dt.datetime.now().strftime('%S')
     seed = float(hour)+float(minute)+float(second)
+    print('seed值是', seed)
+    print(f'seed的值是：{seed}')
 
-    # randomSeed = [1.1,2.2,3.3,4.4,5.5,6.6,7.7,8.8,9.8,10.8,118,1234,133,143,153,163,173] # 设置每一轮的随机种子
+    name_in_url = 'AppFlakyFish_timeout'
+    players_per_group = None
+    num_rounds = 17
     randomSeed = [seed,seed+1,seed+2,seed+3,seed+4,seed+5,seed+6,seed+7,seed+8,seed+9,seed+10,seed+11,seed+12,seed+13,seed+14,seed+15,seed+16] # 设置每一轮的随机种子
     randomBottom = 10  # 股票随机波动不能小于此值 ，如果为 None 不设置下限 
 
-class Subsession(BaseSubsession):
 
+
+class Subsession(BaseSubsession):
     pass
 
 class Group(BaseGroup):

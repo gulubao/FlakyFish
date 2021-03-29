@@ -8,30 +8,11 @@ SESSION_CONFIGS = [
         num_demo_participants=2,
         app_sequence=['AppFlakyFish', 'payment_info'],
     ),
-
     dict(
-        name='public_goods',
-        display_name="Public Goods",
-        num_demo_participants=3,
-        app_sequence=['public_goods', 'payment_info'],
-    ),
-    dict(
-        name='guess_two_thirds',
-        display_name="Guess 2/3 of the Average",
-        num_demo_participants=3,
-        app_sequence=['guess_two_thirds', 'payment_info'],
-    ),
-    dict(
-        name='survey',
-        display_name='survey',
-        num_demo_participants=1,
-        app_sequence=['survey', 'payment_info'],
-    ),
-    dict(
-        name='common_value_auction',
-        display_name='common value auction',
-        num_demo_participants=4,
-        app_sequence=['common_value_auction', 'payment_info'],
+        name='AppFlakyFish_timeout',
+        display_name="FlakyFish_timeout",
+        num_demo_participants=2,
+        app_sequence=['AppFlakyFish_timeout', 'payment_info'],
     ),
 ]
 
