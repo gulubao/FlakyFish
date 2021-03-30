@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    BuyPage_ReadOnly
+{% endblock %}
+
+{% block content %}
+    {% if round_number == 1 %}
+    {% else %}
+        <p>股票1的历史价格是{{ player.stock_1_price_history }} </p>
+        <p>股票2的历史价格是{{ player.stock_2_price_history }} </p>
+        <p>股票3的历史价格是{{ player.stock_3_price_history }} </p>
+        <p>股票4的历史价格是{{ player.stock_4_price_history }} </p>
+        <p>股票5的历史价格是{{ player.stock_5_price_history }} </p>
+        <p>股票6的历史价格是{{ player.stock_6_price_history }} </p>
+    {% endif %}
+    <p>当前是第{{ round_number }} 轮</p>
+    <p>股票1的价格是{{ stock_1_price }} USD </p>
+    <p>股票2的价格是{{ stock_2_price }} USD </p>
+    <p>股票3的价格是{{ stock_3_price }} USD </p>
+    <p>股票4的价格是{{ stock_4_price }} USD </p>
+    <p>股票5的价格是{{ stock_5_price }} USD </p>
+    <p>股票6的价格是{{ stock_6_price }} USD </p>
+    <p>你有{{ money }} 元 </p>
+
+    {% next_button %}
+
+{% endblock %}
