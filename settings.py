@@ -14,6 +14,12 @@ SESSION_CONFIGS = [
         num_demo_participants=2,
         app_sequence=['AppFlakyFish_timeout', 'payment_info'],
     ),
+    dict(
+        name='AppFlakyFish_noseed',
+        display_name="AppFlakyFish_noseed",
+        num_demo_participants=2,
+        app_sequence=['AppFlakyFish_noseed', 'payment_info'],
+    ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
