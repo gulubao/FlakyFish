@@ -1,0 +1,98 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    BuyPage_buyable
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<div id="container">    </div>
+<!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script>
+    $(function () {
+        $('#container').highcharts({
+            title: {
+                text: 'Stock Price, 2010-2016'
+            },
+            subtitle: {
+                text: 'Source: random'
+            },
+
+            xAxis: {
+                categories: ['Round1' , 'Round2' , 'Round3' , 'Round4' , 'Round5' , 'Round6' , 'Round7' , 'Round8' , 'Round9' , 'Round10' , 'Round11' , 'Round12' , 'Round13' , 'Round14' , 'Round15' , 'Round16' , 'Round17']
+              },
+             
+
+
+            yAxis: {
+                title: {
+                    text: 'Prices'
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
+
+            plotOptions: {
+                line: {
+                  dataLabels: {
+                    enabled: true
+                  },
+                  enableMouseTracking: false
+                }
+              },
+
+            series: js_vars.highcharts_series,
+
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
+            }
+        });
+    });
+</script>
+
+    {% if round_number == 1 %}
+    {% else %}
+        <!-- <p>股票1的历史价格是{{ group.stock_1_price_history }} </p>
+        <p>股票2的历史价格是{{ group.stock_2_price_history }} </p>
+        <p>股票3的历史价格是{{ group.stock_3_price_history }} </p>
+        <p>股票4的历史价格是{{ group.stock_4_price_history }} </p>
+        <p>股票5的历史价格是{{ group.stock_5_price_history }} </p>
+        <p>股票6的历史价格是{{ group.stock_6_price_history }} </p> -->
+    {% endif %}
+
+    <p>当前是第{{ round_number }} 轮</p>
+    <p>你有股票1：{{ stock_1_amount }}股</p>
+    <p>你有股票2：{{ stock_2_amount }}股</p>
+    <p>你有股票3：{{ stock_3_amount }}股</p>
+    <p>你有股票4：{{ stock_4_amount }}股</p>
+    <p>你有股票5：{{ stock_5_amount }}股</p>
+    <p>你有股票6：{{ stock_6_amount }}股</p>
+    {% formfields %}
+    <p>你有{{ money }} 元 </p>
+
+    {% next_button %}
+
+{% endblock %}
