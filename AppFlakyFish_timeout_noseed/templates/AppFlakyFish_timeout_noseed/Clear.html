@@ -1,0 +1,84 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+   平仓结算页面
+{% endblock %}
+
+{% block content %}
+
+
+<div id="container">    </div>
+<!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script>
+    $(function () {
+        $('#container').highcharts({
+            title: {
+                text: 'Stock Price, 2010-2016'
+            },
+            subtitle: {
+                text: 'Source: random'
+            },
+
+            xAxis: {
+                categories: ['Round1' , 'Round2' , 'Round3' , 'Round4' , 'Round5' , 'Round6' , 'Round7' , 'Round8' , 'Round9' , 'Round10' , 'Round11' , 'Round12' , 'Round13' , 'Round14' , 'Round15' , 'Round16' , 'Round17']
+              },
+             
+
+
+            yAxis: {
+                title: {
+                    text: 'Prices'
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
+
+            plotOptions: {
+                line: {
+                  dataLabels: {
+                    enabled: true
+                  },
+                  enableMouseTracking: false
+                }
+              },
+
+            series: js_vars.highcharts_series,
+
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
+            }
+        });
+    });
+</script>
+
+    <p>当前是第{{ round_number }} 轮</p>
+    <p>所有持股已出售</p>
+
+    <p>你持有{{ money }} 元 </p>
+
+    {% next_button %}
+
+{% endblock %}
+
+
+

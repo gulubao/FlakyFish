@@ -5,20 +5,14 @@ SESSION_CONFIGS = [
     dict(
         name='AppFlakyFish',
         display_name="FlakyFish",
-        num_demo_participants=2,
+        num_demo_participants=10,
         app_sequence=['AppFlakyFish', 'payment_info'],
     ),
     dict(
-        name='AppFlakyFish_timeout',
-        display_name="FlakyFish_timeout",
+        name='AppFlakyFish_timeout_noseed',
+        display_name="AppFlakyFish_timeout_noseed",
         num_demo_participants=2,
-        app_sequence=['AppFlakyFish_timeout', 'payment_info'],
-    ),
-    dict(
-        name='AppFlakyFish_noseed',
-        display_name="AppFlakyFish_noseed",
-        num_demo_participants=2,
-        app_sequence=['AppFlakyFish_noseed', 'payment_info'],
+        app_sequence=['AppFlakyFish_timeout_noseed', 'payment_info'],
     ),
 ]
 

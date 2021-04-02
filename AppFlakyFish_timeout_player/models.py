@@ -17,7 +17,7 @@ Your app description
 
 
 class Constants(BaseConstants):
-#    import random
+    import random
 
     import datetime as dt
     hour = dt.datetime.now().strftime('%H')
